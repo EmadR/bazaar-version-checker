@@ -1,6 +1,7 @@
 {
-  "name": "bazaar-version-checker",
+  "name": "bazaar-app-version-checker",
   "version": "0.0.1",
+  "private": false,
   "description": "Check app version from Bazaar",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -19,10 +20,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://git.mammutconnect.com:4444/e.rajabi/bazaar-update-checker.git.git"
+    "url": "git+https://github.com/EmadR/bazaar-version-checker.git"
   },
   "bugs": {
-    "url": "https://git.mammutconnect.com:4444/e.rajabi/bazaar-update-checker.git/issues"
+    "url": "https://github.com/EmadR/bazaar-version-checker.git/issues"
   },
   "keywords": [
     "capacitor",

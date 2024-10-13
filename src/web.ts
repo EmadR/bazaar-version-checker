@@ -1,10 +1,13 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { BazaarVersionCheckerPlugin } from './definitions';
+import type { BazaarVersionCheckerPlugin, CheckVersionOptions, CheckVersionResult } from './definitions';
 
 export class BazaarVersionCheckerWeb extends WebPlugin implements BazaarVersionCheckerPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async checkVersion(_options: CheckVersionOptions): Promise<CheckVersionResult> {
+    console.log('Bazaar version checking is not implemented for web.');
+    return {
+      message: 'Web platform not supported',
+      updateAvailable: false,
+    };
   }
 }

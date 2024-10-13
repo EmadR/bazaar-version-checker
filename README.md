@@ -11,9 +11,46 @@ npx cap sync
 
 ## API
 
-<docgen-index></docgen-index>
+<docgen-index>
+
+* [`checkVersion(...)`](#checkversion)
+* [Interfaces](#interfaces)
+
+</docgen-index>
 
 <docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### checkVersion(...)
+
+```typescript
+checkVersion(options: CheckVersionOptions) => Promise<CheckVersionResult>
+```
+
+| Param         | Type                                                                |
+| ------------- | ------------------------------------------------------------------- |
+| **`options`** | <code><a href="#checkversionoptions">CheckVersionOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#checkversionresult">CheckVersionResult</a>&gt;</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### CheckVersionResult
+
+| Prop                  | Type                 |
+| --------------------- | -------------------- |
+| **`message`**         | <code>string</code>  |
+| **`updateAvailable`** | <code>boolean</code> |
+
+
+#### CheckVersionOptions
+
+| Prop              | Type                |
+| ----------------- | ------------------- |
+| **`packageName`** | <code>string</code> |
+
 </docgen-api>
