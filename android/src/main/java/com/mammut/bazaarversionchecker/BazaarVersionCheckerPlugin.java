@@ -53,8 +53,8 @@ public class BazaarVersionCheckerPlugin extends Plugin {
         bindToBazaarUpdateService();
 
         try {
-            String versionCode = updateCheckService.getVersionCode(packageName);
-            String currentVersionCode = BuildConfig.VERSION_CODE;
+            String versionCode = String.valueOf(updateCheckService.getVersionCode(packageName));
+            String currentVersionCode = String.valueOf(BuildConfig.VERSION_CODE);
 
             if (!versionCode.equals(currentVersionCode)) {
                 call.resolve(createResponse("Update available", true));
