@@ -13,6 +13,9 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+
 import com.farsitel.bazaar.IUpdateCheckService;
 
 @CapacitorPlugin(name = "BazaarVersionChecker")
@@ -54,7 +57,15 @@ public class BazaarVersionCheckerPlugin extends Plugin {
 
         try {
             String versionCode = String.valueOf(updateCheckService.getVersionCode(packageName));
-            String currentVersionCode = String.valueOf(BuildConfig.VERSION_CODE);
+            // String currentVersionCode = String.valueOf(BuildConfig.VERSION_CODE);
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            long appVersion;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                appVersion = pInfo.getLongVersionCode();
+            } else {
+                appVersion = pInfo.versionCode;
+            }
+            String currentVersionCode = String.valueOf(versionCode);
 
             if (!versionCode.equals(currentVersionCode)) {
                 call.resolve(createResponse("Update available", true));
