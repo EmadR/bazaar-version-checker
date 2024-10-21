@@ -1,6 +1,6 @@
 {
   "name": "bazaar-app-version-checker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "description": "Check app version from Bazaar",
   "main": "dist/plugin.cjs.js",
