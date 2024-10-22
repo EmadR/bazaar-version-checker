@@ -4,6 +4,7 @@ export interface BazaarVersionCheckerPlugin {
 
 export interface CheckVersionOptions {
   packageName: string;
+  currentVersionCode: string;
 }
 
 export interface CheckVersionResult {

@@ -13,9 +13,6 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-
 import com.farsitel.bazaar.IUpdateCheckService;
 
 @CapacitorPlugin(name = "BazaarVersionChecker")
@@ -48,6 +45,8 @@ public class BazaarVersionCheckerPlugin extends Plugin {
     @PluginMethod
     public void checkVersion(PluginCall call) {
         String packageName = call.getString("packageName");
+        String currentVersionCode = call.getString("currentVersionCode");
+
         if (packageName == null) {
             call.reject("Package name is required");
             return;
@@ -56,24 +55,18 @@ public class BazaarVersionCheckerPlugin extends Plugin {
         bindToBazaarUpdateService();
 
         try {
-            String versionCode = String.valueOf(updateCheckService.getVersionCode(packageName));
-            // String currentVersionCode = String.valueOf(BuildConfig.VERSION_CODE);
-            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            long appVersion;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-                appVersion = pInfo.getLongVersionCode();
-            } else {
-                appVersion = pInfo.versionCode;
-            }
-            String currentVersionCode = String.valueOf(versionCode);
+            long currentVersionCode = Long.parseLong(currentVersionCodeStr);
+            long versionCode = updateCheckService.getVersionCode(packageName);
 
-            if (!versionCode.equals(currentVersionCode)) {
+            if (versionCode != currentVersionCode) {
                 call.resolve(createResponse("Update available", true));
             } else {
                 call.resolve(createResponse("Up to date", false));
             }
         } catch (RemoteException e) {
             call.reject("Error checking version", e);
+        } catch (NumberFormatException e) {
+            call.reject("Invalid current version code", e);
         }
     }
 
