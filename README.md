@@ -49,8 +49,9 @@ checkVersion(options: CheckVersionOptions) => Promise<CheckVersionResult>
 
 #### CheckVersionOptions
 
-| Prop              | Type                |
-| ----------------- | ------------------- |
-| **`packageName`** | <code>string</code> |
+| Prop                     | Type                |
+| ------------------------ | ------------------- |
+| **`packageName`**        | <code>string</code> |
+| **`currentVersionCode`** | <code>string</code> |
 
 </docgen-api>
